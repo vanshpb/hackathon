@@ -5,14 +5,14 @@ import Link from "next/link";
 export default function TeamSubmissionForm() {
   const [teamName, setTeamName] = useState("");
   const [members, setMembers] = useState(
-    Array(5).fill({
+    Array.from({ length: 5 }, () => ({
       name: "",
       enrollment: "",
       email: "",
       phone: "",
       linkedin: "",
       profilePic: null as File | null,
-    })
+    }))
   );
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export default function TeamSubmissionForm() {
     value: string | File | null
   ) => {
     const updated = [...members];
-    (updated[index] as any)[field] = value;
+    updated[index] = { ...updated[index], [field]: value };
     setMembers(updated);
   };
 
@@ -259,8 +259,7 @@ export default function TeamSubmissionForm() {
 
       <style jsx>{`
         @keyframes pulse-slow {
-          0%,
-          100% {
+          0%, 100% {
             opacity: 1;
           }
           50% {
