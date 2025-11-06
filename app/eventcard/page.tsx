@@ -43,7 +43,7 @@ export default function EventCard() {
                                 icon="📍"
                                 title="Location"
                                 value={
-                                    <a
+                                    <Link
                                         href="https://maps.app.goo.gl/3b6XfA75ymRZurg9A"
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -51,7 +51,7 @@ export default function EventCard() {
                                         onClick={(e) => e.stopPropagation()} // ✅ Prevent link inside from triggering redirect
                                     >
                                         Madhav University, Rajasthan
-                                    </a>
+                                    </Link>
                                 }
                                 color="purple"
                             />
